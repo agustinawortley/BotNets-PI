@@ -36,13 +36,46 @@ echo "Configuración de contraseñas de Elasticsearch"
 cd /usr/share/elasticsearch/bin
 sudo yes | sudo ./elasticsearch-setup-passwords auto > $CurrentPath/passwords.txt
 
+#------------------------------------------------------------------------------------------#
 
-# echo "Paso 3: Configuración de Kibana"
+sudo apt install kibana
 
-# echo "Habilitación xpack.securityen Kibana"
-# cd /usr/share/kibana/bin/
-# KIBANA=$(sudo ./kibana-encryption-keys generate -q)
+echo "Paso 3: Configuración de Kibana"
 
-# sed -i "$a "$KIBANA"" /etc/kibana/kibana.yml
+echo "Habilitación xpack.securityen Kibana"
 
-# sed -i "s|#server.host: \"localhost\"|server.host: \""$IP"\"|g" /etc/kibana/kibana.yml
+cd /usr/share/kibana/bin/
+KIBANA=$(sudo ./kibana-encryption-keys generate -q)
+echo $KIBANA
+echo "$KIBANA" >> /etc/kibana/kibana.yml
+
+sed -i "s|#server.host: \"localhost\"|server.host: \""$IP"\"|g" /etc/kibana/kibana.yml
+
+echo "Configuración de credenciales Kibana"
+
+cd $CurrentPath
+Line=$(awk '/PASSWORD kibana_system/ {print $4}' passwords.txt)
+cd /usr/share/kibana/bin/
+echo kibana_system | sudo ./kibana-keystore add elasticsearch.username
+echo $Line | sudo ./kibana-keystore add elasticsearch.password
+
+echo "Inicio de servicio Kibana"
+sudo systemctl start kibana.service
+
+#------------------------------------------------------------------------------------------#
+
+sudo apt install filebeat
+
+sed -i "s|#host: \"localhost:5601\"|host: \""$IP":5601\"|g" /etc/filebeat/filebeat.yml
+sed -i "s|hosts: [\"localhost:9200\"]|hosts: [\""$IP":9200\"]|g" /etc/filebeat/filebeat.yml
+
+cd $CurrentPath
+Line=$(awk '/PASSWORD elastic/ {print $4}' passwords.txt)
+sed -i "s|#username: \"elastic\"|username: \"elastic\"|g" /etc/filebeat/filebeat.yml
+sed -i "s|#password: \"changeme\"|password: \"$Line\"|g" /etc/filebeat/filebeat.yml
+
+sudo filebeat modules enable suricata
+
+sudo filebeat setup
+
+sudo systemctl start filebeat.service
