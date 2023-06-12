@@ -4,6 +4,9 @@ CurrentPath=$PWD
 
 echo "Paso 1: Obtener repositorios"
 
+echo "Instalando dependencias previas..."
+sudo apt update
+yes | sudo apt install curl git
 curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 

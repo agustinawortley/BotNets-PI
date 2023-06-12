@@ -15,26 +15,21 @@ Los *componentes* que utilizará para construir su propia herramienta SIEM son:
 
 Primero instalará y configurará Elasticsearch y Kibana con algunas configuraciones de autenticación específicas. Luego agregará Filebeat a su sistema Suricata para enviar su `eve.json` se registra en Elasticsearch.
 
-Finalmente, se conectara a Kibana usando SSH y su navegador web, y luego cargar e interactuar con los tableros de Kibana que muestran los eventos y alertas de Suricata.
-
 ## Requisitos previos
+* OS Ubuntu 20.04, server o LTS
 
-* Suricata ejecutándose en un servidor Ubuntu 20.04.
+* [Instalación de Suricata](../Suricata/Suricata.md)
 
-* También necesitará un segundo servidor para alojar Elasticsearch y Kibana. Este servidor se denominará su servidor de Elasticsearch . Debería ser un servidor Ubuntu 20.04 con:
-
-* 4 GB de RAM y 2 CPU configuradas con un usuario sudo no root. Puede lograr esto siguiendo la Configuración inicial del servidor con Ubuntu 20.04.
-
-Ambos servidores deben poder comunicarse mediante direcciones IP privadas. Puede usar una VPN como WireGuard para conectar sus servidores o usar un proveedor de nube que tenga redes privadas entre hosts. También puede optar por ejecutar Elasticsearch, Kibana, Filebeat y Suricata en el mismo servidor para experimentar. 
+* 8 GB de RAM y 4 CPU configuradas con un usuario sudo no root
 
 ## Ejecucion
 
-Compruebe que el archivo "script.sh" tiene permisos de ejecución generales.
+Compruebe que el archivo "elk_config.sh" tiene permisos de ejecución generales.
 ```
-$ chmod +x script.sh
+$ chmod +x elk_config.sh
 ```
 
 Iniciar script
 ```
-$ ./script.sh
+$ sudo ./elk_config.sh
 ```
