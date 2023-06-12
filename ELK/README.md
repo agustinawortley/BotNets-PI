@@ -18,7 +18,7 @@ Primero instalará y configurará Elasticsearch y Kibana con algunas configuraci
 ## Requisitos previos
 * OS Ubuntu 20.04, server o LTS
 
-* [Instalación de Suricata](../Suricata/Suricata.md)
+* [Instalación de Suricata](../Suricata/README.md)
 
 * 8 GB de RAM y 4 CPU configuradas con un usuario sudo no root
 

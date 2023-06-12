@@ -34,4 +34,4 @@ Iniciar script
 $ sudo ./suricata_config.sh
 ```
 
-Una vez terminada la instalación por favor proceder con la [instalación de ell stack ELK](../ELK/ELK.md).
+Una vez terminada la instalación por favor proceder con la [instalación de ell stack ELK](../ELK/README.md).
