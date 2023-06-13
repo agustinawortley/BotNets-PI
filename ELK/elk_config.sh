@@ -2,7 +2,7 @@
 
 CurrentPath=$PWD
 
-echo "Paso 1: Obtener repositorios"
+echo -e "\033[1;37;41mPaso 1: \033[0;37mObtener repositorios"
 
 echo "Instalando dependencias previas..."
 sudo apt update
@@ -10,11 +10,11 @@ yes | sudo apt install curl git
 curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 
-echo "Paso 2: Instalar Elasticsearch"
+echo -e "\033[1;37;41mPaso 2: \033[0;37mInstalar Elasticsearch"
 sudo apt update
 sudo apt install elasticsearch
 
-echo "Paso 3: Registrar dirección IP del equipo"
+echo -e "\033[1;37;41mPaso 3: \033[0;37mRegistrar dirección IP del equipo"
 ip -brief address show
 ip -brief address show > ip.txt
 
@@ -25,7 +25,7 @@ Line=$(awk "/$interface/ {print $3}" ip.txt)
 IP=$(echo $Line | awk -v N=3 '{print $N}')
 IP=${IP::-3}
 
-echo "Paso 4: Configuración de Elasticsearch"
+echo -e "\033[1;37;41mPaso 4: \033[0;37mConfiguración de Elasticsearch"
 
 echo "Configuración de redes de Elasticsearch"
 sed -i "s|network.host: 192.168.0.1|network.bind_host: [\"127.0.0.1\", \""$IP"\"]|g" /etc/elasticsearch/elasticsearch.yml
@@ -44,10 +44,10 @@ cd /usr/share/elasticsearch/bin
 sudo yes | sudo ./elasticsearch-setup-passwords auto > $CurrentPath/passwords.txt
 
 #------------------------------------------------------------------------------------------#
-echo "Paso 5: Instalar Kibana"
+echo -e "\033[1;37;41mPaso 5: \033[0;37mInstalar Kibana"
 sudo apt install kibana
 
-echo "Paso 6: Configuración de Kibana"
+echo -e "\033[1;37;41mPaso 6: \033[0;37mConfiguración de Kibana"
 
 #echo "Habilitación xpack.securityen Kibana"
 cd /usr/share/kibana/bin/
@@ -68,10 +68,10 @@ echo "Inicio de servicio Kibana"
 sudo systemctl start kibana.service
 
 #------------------------------------------------------------------------------------------#
-echo "Paso 7: Instalar Filebeat"
+echo -e "\033[1;37;41mPaso 7: \033[0;37mInstalar Filebeat"
 sudo apt install filebeat
 
-echo "Paso 8: Configuración de Filebeat"
+echo -e "\033[1;37;41mPaso 8: \033[0;37mConfiguración de Filebeat"
 
 sed -i "s|#host: \"localhost:5601\"|host: \""$IP":5601\"|g" /etc/filebeat/filebeat.yml
 sed -i "s|hosts: [\"localhost:9200\"]|hosts: [\""$IP":9200\"]|g" /etc/filebeat/filebeat.yml
@@ -90,6 +90,6 @@ sudo systemctl start filebeat.service
 
 #------------------------------------------------------------------------------------------#
 echo "#------------------------------------------------------------------------------------------#"
-echo "Para iniciar entrar a $IP:5601"
-echo "usuario: elastic"
-echo "password: $Line"
+echo -e "\033[1;37;41mPara iniciar entrar a $IP:5601"
+echo -e "\033[1;37;41musuario: \033[0;37melastic"
+echo -e "\033[1;37;41mpassword: \033[0;37m$Line"
