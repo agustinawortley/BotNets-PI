@@ -17,8 +17,13 @@ sudo apt install elasticsearch
 echo "Paso 3: Registrar dirección IP del equipo"
 ip -brief address show
 ip -brief address show > ip.txt
-Line=$(awk '/enp0s3/ {print $3}' ip.txt)
-IP=${Line::-3}
+
+interface=$(ip -p -j route show default | grep dev | awk '{print $2}')
+interface="${interface:1: -2}"
+
+Line=$(awk "/$interface/ {print $3}" ip.txt)
+IP=$(echo $Line | awk -v N=3 '{print $N}')
+IP=${IP::-3}
 
 echo "Paso 4: Configuración de Elasticsearch"
 
@@ -28,8 +33,8 @@ sed -i "s|network.host: 192.168.0.1|network.bind_host: [\"127.0.0.1\", \""$IP"\"
 sed -i '$a discovery.type: single-node' /etc/elasticsearch/elasticsearch.yml
 sed -i '$a xpack.security.enabled: true' /etc/elasticsearch/elasticsearch.yml
 
-sudo ufw allow in on enp0s3
-sudo ufw allow out on enp0s3
+sudo ufw allow in on $interface
+sudo ufw allow out on $interface
 
 echo "Inicio de servicio Elasticsearch"
 sudo systemctl start elasticsearch.service
