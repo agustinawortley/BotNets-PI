@@ -91,5 +91,5 @@ sudo systemctl start filebeat.service
 #------------------------------------------------------------------------------------------#
 echo "#------------------------------------------------------------------------------------------#"
 echo -e "\033[1;37;41mPara iniciar entrar a $IP:5601"
-echo -e "\033[1;37;41musuario: \033[0;37melastic"
-echo -e "\033[1;37;41mpassword: \033[0;37m$Line"
+echo "usuario: elastic"
+echo "password: $Line"
