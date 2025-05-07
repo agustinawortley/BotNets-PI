@@ -2,7 +2,7 @@
 
 Para crear una herramienta de Gestión de eventos e información de seguridad (SIEM) utilizando Elastic Stack y Ubuntu 20.04. Las herramientas SIEM se utilizan para recopilar, agregar, almacenar y analizar datos de eventos para buscar amenazas de seguridad y actividad sospechosa en sus redes y servidores.
 
-## Componentes
+## Componentes 
 
 Los *componentes* que utilizará para construir su propia herramienta SIEM son:
 

@@ -8,7 +8,7 @@ Los ataques actuales se concentran en el usuario y en las organizaciones. Detrá
 La presencia de un canal de comunicación con un controlador es lo que diferencia a los botnets de otros tipos de ataques.
 Las botnets representan un problema real y de rápida evolución y constituyen una de las amenazas de seguridad más preocupantes debido a que causan pérdidas financieras y daños a las organizaciones de todo el mundo.
 
-Por otro lado, las redes universitarias son un terreno fértil para la diseminación de estas infecciones ya que:
+Por otro lado, las redes universitarias son un terreno fértil para la diseminación de estas infecciones ya que: 
 
 * Las redes son abiertas para docentes y estudiantes
 * Existe mucha flexibilidad para conectar equipos (en algunos casos la conexión a la red wifi se realiza sin contraseña) 

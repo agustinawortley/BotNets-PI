@@ -3,7 +3,7 @@
 Este proyecto describe cómo configurar un sistema de gestión de logs utilizando Grafana, Loki y Promtail en un entorno Ubuntu 20.04. Este stack permite centralizar, visualizar y analizar logs de sistemas y aplicaciones en tiempo real.
 
 ## Componentes
-
+ 
 Los principales componentes utilizados en esta configuración son:
 
 * **Grafana** Herramienta de visualización que permite explorar y analizar los datos almacenados en Loki.

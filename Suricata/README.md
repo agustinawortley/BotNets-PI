@@ -4,7 +4,7 @@
 Suricata es un proyecto de código abierto desarrollado por la Open Information Security Foundation (OISF) que ofrece un sistema de detección y prevención de intrusiones en redes de alto rendimiento (IDS/IPS) con monitoreo en tiempo real, análisis y protección contra amenazas en la red.
 
 Suricata es conocido por su capacidad de inspeccionar paquetes de red y detectar diversos tipos de eventos de seguridad, incluyendo intentos de intrusión, infecciones de malware, violaciones de políticas y actividades de red sospechosas. 
-
+ 
 Algunas características clave incluyen:
 * Arquitectura multi-hilo y multi-núcleo
 * Detección basada en firmas: Suricata incluye un sólido lenguaje de firmas que permite la creación e implementación de reglas de detección personalizadas.
