@@ -41,3 +41,6 @@ Finalmente, Integrar un proceso de detección, localización y remediación de b
 
 [Referencias varias](https://en.wikipedia.org/wiki/Botnet)
 
+# Uso del repositorio
+
+Para comenzar con la instalación de las herramientas por favor referirse a la [Guía de instalación de Suricata](./Suricata/README.md).

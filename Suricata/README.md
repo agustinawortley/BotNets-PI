@@ -34,4 +34,6 @@ Iniciar script
 $ sudo ./suricata_config.sh
 ```
 
-Una vez terminada la instalación por favor proceder con la [instalación de ell stack ELK](../ELK/README.md).
+Una vez terminada la instalación por favor proceder con el medio de visualización de alertas de preferencia:
+- [Instalación del stack ELK](../ELK/README.md).
+- [Instalación del stack Grafana](../Grafana-Stack/README.md).
