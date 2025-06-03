@@ -6,7 +6,7 @@ echo | sudo add-apt-repository ppa:oisf/suricata-stable
 
 echo -e "\033[1;37;41mPaso 2: \033[0;37mInstalar Suricata y otras dependencias necesarias"
 yes | sudo apt install curl git
-yes | sudo apt install suricata=6.0.12-0ubuntu1
+yes | sudo apt install suricata
 
 echo -e "\033[1;37;41mPaso 3: \033[0;37mHabilitar Suricata para que se inicialice con el OS"
 sudo systemctl enable suricata.service
